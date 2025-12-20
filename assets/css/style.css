@@ -1,9 +1,10 @@
 :root {
-  --color-primary: #7D40FF;
+  --color-primary: #d8ff85;
+  --color-slider-surface: #0a211f;
   --color-offwhite: #FAFAFA;
-  --color-bg: #F4F1FF;
-  --color-title: #0A0A0A;
-  --color-text: #525252;
+  --color-body-bg: #e6ecd6;
+  --color-title: #FFFFFF;
+  --color-text: var(--color-body-bg);
 }
 
 * {
@@ -20,8 +21,8 @@ body {
   display: grid;
   align-items: center;
   color: var(--color-text);
-  background-color: var(--color-bg);
-  padding-inline: 20px;
+  background-color: var(--color-body-bg);
+  padding-block: 5vh;
 }
 
 img {
@@ -29,24 +30,46 @@ img {
   max-width: 100%;
 }
 
-.slider-grid {
-  --_thumbnail-slider-offset: 22px;
-  display: grid;
-  grid-template-columns: 22.836538461% 72.676282051% 4.487179487%;
-  max-width: 1248px;
-  margin-inline: auto;
-  padding-block: var(--_thumbnail-slider-offset);
-  overflow: hidden;
-}
-
 .swiper {
   width: 100%;
+}
+
+.slider {
+  --_thumbnail-slider-offset: 22px;
+  padding-inline: 20px;
+  background-color: var(--color-slider-surface);
+  overflow: hidden;
+  padding-block: var(--_thumbnail-slider-offset);
+}
+.slider_grid {
+  display: grid;
+  max-width: 1248px;
+  margin-inline: auto;
+}
+@media screen and (max-width: 1099.98px) {
+  .slider_grid {
+    gap: 1.875rem;
+  }
+}
+@media screen and (min-width: 1100px) {
+  .slider_grid {
+    grid-template-columns: 22.836538461% 72.676282051% 4.487179487%;
+  }
 }
 
 .thumbnail-card {
   overflow: hidden;
   height: 100%;
-  border-radius: 32px;
+}
+@media screen and (max-width: 1099.98px) {
+  .thumbnail-card {
+    border-radius: 50%;
+  }
+}
+@media screen and (min-width: 1100px) {
+  .thumbnail-card {
+    border-radius: clamp(0.75rem, 0.3099rem + 1.8779vw, 2rem);
+  }
 }
 .thumbnail-card img {
   width: 100%;
@@ -55,44 +78,92 @@ img {
      object-fit: cover;
 }
 
-.thumbnail-slider {
-  height: 761px;
-  overflow: visible;
+@media screen and (max-width: 1099.98px) {
+  .thumbnail-slider {
+    max-width: 690px;
+  }
+}
+@media screen and (min-width: 1100px) {
+  .thumbnail-slider {
+    height: clamp(37.5rem, 4.9449rem + 47.3529vw, 47.5625rem);
+    overflow: visible;
+  }
 }
 .thumbnail-slider .swiper-slide {
   transition: padding 100ms linear;
 }
-.thumbnail-slider .swiper-slide-prev, .thumbnail-slider .swiper-slide-next {
-  padding-block: 20px;
+@media screen and (max-width: 1099.98px) {
+  .thumbnail-slider .swiper-slide {
+    aspect-ratio: 1/1;
+  }
+}
+@media screen and (min-width: 1100px) {
+  .thumbnail-slider .swiper-slide-prev, .thumbnail-slider .swiper-slide-next {
+    padding-block: 20px;
+  }
 }
 .thumbnail-slider .swiper-slide:not(.swiper-slide-active) {
-  padding-inline: 36px;
-  opacity: 0.35;
+  opacity: 0.4;
 }
-.thumbnail-slider .swiper-slide-active .thumbnail-card {
-  border-radius: 40px;
+@media screen and (max-width: 1099.98px) {
+  .thumbnail-slider .swiper-slide:not(.swiper-slide-active) {
+    padding: clamp(0.75rem, 0.6207rem + 0.5517vw, 1rem);
+  }
+}
+@media screen and (min-width: 1100px) {
+  .thumbnail-slider .swiper-slide:not(.swiper-slide-active) {
+    padding-inline: 36px;
+  }
+}
+@media screen and (min-width: 1100px) {
+  .thumbnail-slider .swiper-slide-active .thumbnail-card {
+    border-radius: clamp(1rem, 0.4718rem + 2.2535vw, 2.5rem);
+  }
 }
 
-.card {
-  margin-left: clamp(2.1875rem, -5.2941rem + 10.8824vw, 4.5rem);
-  margin-right: clamp(2.1875rem, -1.0478rem + 4.7059vw, 3.1875rem);
+@media screen and (max-width: 1099.98px) {
+  .card {
+    display: grid;
+    justify-items: center;
+    text-align: center;
+  }
 }
-.card__description {
-  font-size: 40px;
-  margin-block: 56px;
+@media screen and (min-width: 1100px) {
+  .card {
+    margin-left: clamp(2.1875rem, -5.2941rem + 10.8824vw, 4.5rem);
+    margin-right: clamp(2.1875rem, -1.0478rem + 4.7059vw, 3.1875rem);
+  }
+}
+.card_logo {
+  color: var(--color-primary);
+  font-size: clamp(1.125rem, 0.9049rem + 0.939vw, 1.75rem);
+  font-weight: 700;
+}
+.card_description {
+  font-size: clamp(1.25rem, 1.056rem + 0.8276vw, 1.625rem);
+  margin-block: clamp(1.625rem, 0.9648rem + 2.8169vw, 3.5rem);
   line-height: 1.4;
   letter-spacing: 0.01em;
 }
-.card__title {
+@media screen and (max-width: 1099.98px) {
+  .card_description {
+    max-width: 40ch;
+  }
+}
+@media screen and (min-width: 1100px) {
+  .card_description {
+    font-size: clamp(1.875rem, -0.1471rem + 2.9412vw, 2.5rem);
+  }
+}
+.card_title {
   color: var(--color-title);
-  font-size: 32px;
+  font-size: clamp(1.125rem, 0.8169rem + 1.3146vw, 2rem);
   font-weight: 700;
   line-height: 1.2;
-  margin-bottom: 4px;
-  letter-spacing: 0.02em;
+  margin-bottom: 0.25rem;
 }
-.card__role {
-  font-size: 18px;
+.card_role {
+  font-size: clamp(1rem, 0.956rem + 0.1878vw, 1.125rem);
   line-height: 1.5;
   letter-spacing: 0.02em;
 }
@@ -108,10 +179,11 @@ img {
   display: grid;
   align-items: center;
   transition: opacity 0.35s linear;
-  background-color: var(--color-bg);
+  background-color: var(--color-slider-surface);
 }
 .preview-slider .swiper-slide:not(.swiper-slide-active) {
   opacity: 0;
+  pointer-events: none;
 }
 
 .slider-navigation {
@@ -119,23 +191,40 @@ img {
   gap: 12px;
   align-content: center;
 }
-.slider-navigation__arrow {
-  width: 100%;
+@media screen and (max-width: 1099.98px) {
+  .slider-navigation {
+    grid-auto-flow: column;
+    justify-content: center;
+  }
+}
+@media screen and (min-width: 1100px) {
+  .slider-navigation {
+    width: 100%;
+  }
+}
+.slider-navigation_arrow {
+  width: 46px;
   aspect-ratio: 1/1;
   border-radius: 50%;
   color: var(--color-primary);
-  background-color: var(--color-offwhite);
+  background-color: transparent;
   border: 1px solid var(--color-primary);
   outline: 0;
 }
-.slider-navigation__arrow:not(:disabled) {
+@media screen and (min-width: 1100px) {
+  .slider-navigation_arrow {
+    width: 100%;
+  }
+}
+.slider-navigation_arrow:not(:disabled) {
   cursor: pointer;
 }
-.slider-navigation__arrow:focus-visible {
-  color: var(--color-offwhite);
-  background-color: var(--color-title);
-}
-.slider-navigation__arrow:active {
-  color: var(--color-offwhite);
+.slider-navigation_arrow:focus-visible, .slider-navigation_arrow:active {
+  color: var(--color-slider-surface);
   background-color: var(--color-primary);
+}
+@media screen and (max-width: 1099.98px) {
+  .slider-navigation_arrow.cc-left, .slider-navigation_arrow.cc-right {
+    transform: rotate(-90deg);
+  }
 }/*# sourceMappingURL=style.css.map */
