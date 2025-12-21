@@ -1,4 +1,4 @@
-@mixin medium-screen {
+@mixin small-screen {
     @media screen and (max-width: 1099.98px) {
         @content;
     }
@@ -46,6 +46,7 @@ img {
     width: 100%;
 }
 
+/* Slider Container Styles */
 .slider {
     --_thumbnail-slider-offset: 22px;
     padding-inline: 20px;
@@ -58,7 +59,7 @@ img {
         max-width: 1248px;
         margin-inline: auto;
         
-        @include medium-screen {
+        @include small-screen {
             gap: 1.875rem;
         }
         @include large-screen {
@@ -67,11 +68,12 @@ img {
     }
 }
 
+/* Thumbnail Card Styles */
 .thumbnail-card {
     overflow: hidden;
     height: 100%;
 
-    @include medium-screen {
+    @include small-screen {
         border-radius: 50%;
     }
     @include large-screen {
@@ -85,8 +87,9 @@ img {
     }
 }
 
+/* Thumbnail Slider Styles */
 .thumbnail-slider {
-    @include medium-screen {
+    @include small-screen {
         max-width: 690px;
     }
 
@@ -98,7 +101,7 @@ img {
     .swiper-slide {
         transition: padding 100ms linear;
 
-        @include medium-screen {
+        @include small-screen {
             aspect-ratio: 1/1;
         }
 
@@ -112,7 +115,7 @@ img {
         &:not(.swiper-slide-active) {
             opacity: 0.4;
 
-            @include medium-screen {
+            @include small-screen {
                 padding: clamp(0.75rem, 0.6207rem + 0.5517vw, 1rem);
             }
 
@@ -131,8 +134,9 @@ img {
     }
 }
 
+/* Card Styles */
 .card {
-    @include medium-screen {
+    @include small-screen {
         display: grid;
         justify-items: center;
         text-align: center;
@@ -154,7 +158,7 @@ img {
         line-height: 1.4;
         letter-spacing: 0.01em;
         
-        @include medium-screen {
+        @include small-screen {
             max-width: 40ch;
         }
         @include large-screen {
@@ -177,6 +181,7 @@ img {
     }
 }
 
+/* Preview Slider Styles */
 .preview-slider {
     .swiper-wrapper {
         display: grid;
@@ -200,11 +205,12 @@ img {
     }
 }
 
+/* Slider Navigation Styles */
 .slider-navigation {
     display: grid;
     gap: 12px;
     align-content: center;
-    @include medium-screen {
+    @include small-screen {
         grid-auto-flow: column;
         justify-content: center;
     }
@@ -234,7 +240,7 @@ img {
             background-color: var(--color-primary);
         }
 
-        @include medium-screen {
+        @include small-screen {
             &.cc-left,
             &.cc-right
             {
