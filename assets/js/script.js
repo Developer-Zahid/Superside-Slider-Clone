@@ -2,12 +2,12 @@ const sliderParent = document.querySelector('[data-slider="parent"]') || { datas
 const slideChangeSpeed = (sliderParent.dataset.slideChangeSpeed * 1) || 700;
 const autoplayDelay = (sliderParent.dataset.autoplayDelay * 1) || 3000;
 const largeScreenSize = window.matchMedia("(min-width: 1100px)");
-const totalSlides = document.querySelectorAll('[data-swiper-slider="thumbnail"] .swiper-slide').length || 0;
+const totalSlides = document.querySelectorAll('[data-swiper-slider="thumbnail"] .swiper-slide').length / 2 || 0;
 let swiperThumbnail = null;
 let swiperPreview = null;
 const slidersCommonOptions = {
 	loop: true,
-	loopAdditionalSlides: totalSlides,
+	loopAdditionalSlides: Math.floor(totalSlides),
 	speed: slideChangeSpeed,
 	slidesPerView: 3,
 	breakpoints: {
